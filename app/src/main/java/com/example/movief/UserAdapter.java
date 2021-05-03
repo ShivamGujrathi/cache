@@ -32,7 +32,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVH>
         context = parent.getContext();
         return new UserAdapter.UserAdapterVH(LayoutInflater.from(context).inflate(R.layout.raw_user, parent, false));
     }
-
+//
 
     @Override
     public void onBindViewHolder(@NonNull UserAdapterVH holder, int position) {
