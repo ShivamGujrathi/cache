@@ -45,7 +45,7 @@ public class UserAdapter2 extends RecyclerView.Adapter<UserAdapter2.UserAdapter2
     public void onBindViewHolder(@NonNull UserAdapter2VH holder, final int position) {
         ResultsItem userResponse = userResponseList1.get(position);
         final List<String> charecter = userResponse.getCharacters();
-     //  holder.charecter.setText(charecter.get(position));
+      // holder.charecter.setText(charecter.get(position));
         getAllUsers1(charecter.get(position),holder.charecter);
         holder.charecter.setOnClickListener(new View.OnClickListener() {
             @Override

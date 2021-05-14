@@ -103,5 +103,4 @@ public class ResultsItem implements Serializable {
 	public String getProducer(){
 		return producer;
 	}
-
 }
