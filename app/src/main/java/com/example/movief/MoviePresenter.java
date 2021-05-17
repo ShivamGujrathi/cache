@@ -11,48 +11,48 @@ import java.util.List;
             movieListModel = new MovieListModel();
         }
 
-        @Override
-        public void onDestroy() {
-            this.movieListView=null;
+//        @Override
+//        public void onDestroy() {
+//            this.movieListView=null;
+//
+//        }
 
-        }
 
-
-        @Override
-        public void getMoreData() {
-            if (movieListView !=null)
-            {
-                movieListView.showProgress();
-            }
-            movieListModel.getMovieList(this);
-        }
+//        @Override
+//        public void getMoreData() {
+//            if (movieListView !=null)
+//            {
+//                movieListView.showProgress();
+//            }
+//            movieListModel.getMovieList(this);
+//        }
 
         @Override
         public void requestDataFromServer() {
-            if (movieListView !=null)
-            {
-                movieListView.showProgress();
-
-            }
-            movieListModel.getMovieList(this);
+//            if (movieListView !=null)
+//            {
+//                movieListView.showProgress();
+//
+//            }
+        movieListModel.getMovieList(this);
 
         }
 
         @Override
         public void onfinished(List<ResultsItem> movieArrayList) {
             movieListView.setDataToRecycerview(movieArrayList);
-            if(movieListView != null) {
-                movieListView.hideProgress();
-            }
+//            if(movieListView != null) {
+//                movieListView.hideProgress();
+//            }
         }
 
         @Override
         public void onFailure(Throwable t) {
             movieListView.onResponseFailure(t);
 
-            if(movieListView != null) {
-                movieListView.hideProgress();
-            }
+//            if(movieListView != null) {
+//                movieListView.hideProgress();
+//            }
         }
     }
 

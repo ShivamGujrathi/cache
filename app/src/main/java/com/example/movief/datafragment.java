@@ -91,7 +91,7 @@ public class datafragment extends Fragment implements MovieListContract.View,Use
 //                Intent myIntent = new Intent(getContext(), UserDetailsActivity.class).putExtra("data",userResponse);
 //                startActivity(myIntent);
                 Bundle bundle=new Bundle();
-                bundle.putSerializable("data", userResponse);
+                bundle.putParcelable("data", userResponse);
              datafragment22 f2=new datafragment22();
              f2.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.maincontainer,f2).commit();
@@ -101,13 +101,13 @@ public class datafragment extends Fragment implements MovieListContract.View,Use
     }
     public void ClickedUser(ResultsItem userResponse) {
     }
-    @Override
-    public void showProgress() {
-    }
-
-    @Override
-    public void hideProgress() {
-    }
+//    @Override
+//    public void showProgress() {
+//    }
+//
+//    @Override
+//    public void hideProgress() {
+//    }
 
    @Override
  public void setDataToRecycerview(List<ResultsItem> movieListArray) {

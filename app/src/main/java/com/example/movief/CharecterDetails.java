@@ -1,10 +1,13 @@
 package com.example.movief;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class CharecterDetails implements Serializable {
+public class CharecterDetails implements Parcelable {
 
 	@SerializedName("films")
 	private List<String> films;
@@ -53,6 +56,36 @@ public class CharecterDetails implements Serializable {
 
 	@SerializedName("height")
 	private String height;
+
+	protected CharecterDetails(Parcel in) {
+		films = in.createStringArrayList();
+		homeworld = in.readString();
+		gender = in.readString();
+		skinColor = in.readString();
+		edited = in.readString();
+		created = in.readString();
+		mass = in.readString();
+		vehicles = in.createStringArrayList();
+		url = in.readString();
+		hairColor = in.readString();
+		birthYear = in.readString();
+		eyeColor = in.readString();
+		starships = in.createStringArrayList();
+		name = in.readString();
+		height = in.readString();
+	}
+
+	public static final Creator<CharecterDetails> CREATOR = new Creator<CharecterDetails>() {
+		@Override
+		public CharecterDetails createFromParcel(Parcel in) {
+			return new CharecterDetails(in);
+		}
+
+		@Override
+		public CharecterDetails[] newArray(int size) {
+			return new CharecterDetails[size];
+		}
+	};
 
 	public List<String> getFilms(){
 		return films;
@@ -116,5 +149,29 @@ public class CharecterDetails implements Serializable {
 
 	public String getHeight(){
 		return height;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
+		parcel.writeStringList(films);
+		parcel.writeString(homeworld);
+		parcel.writeString(gender);
+		parcel.writeString(skinColor);
+		parcel.writeString(edited);
+		parcel.writeString(created);
+		parcel.writeString(mass);
+		parcel.writeStringList(vehicles);
+		parcel.writeString(url);
+		parcel.writeString(hairColor);
+		parcel.writeString(birthYear);
+		parcel.writeString(eyeColor);
+		parcel.writeStringList(starships);
+		parcel.writeString(name);
+		parcel.writeString(height);
 	}
 }

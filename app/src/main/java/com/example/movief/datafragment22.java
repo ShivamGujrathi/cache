@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,14 +36,10 @@ public class datafragment22 extends Fragment implements  MovieListContract.View,
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    ResultsItem resultsItem;
-    RecyclerView recyclerView1;
-
+   private ResultsItem resultsItem;
+    private RecyclerView recyclerView1;
     private MoviePresenter moviePresenter;
-    UserAdapter2 userAdapter2;
-
-
-
+   private UserAdapter2 userAdapter2;
     public datafragment22() {
         // Required empty public constructor
     }
@@ -71,7 +68,7 @@ public class datafragment22 extends Fragment implements  MovieListContract.View,
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            resultsItem= (ResultsItem) getArguments().getSerializable("data");
+            resultsItem= (ResultsItem) getArguments().getParcelable("data");
         }
     }
 
@@ -91,11 +88,10 @@ public class datafragment22 extends Fragment implements  MovieListContract.View,
             public void clickedUser(CharecterDetails charecterDetails) {
 
                 Bundle bundle=new Bundle();
-                bundle.putSerializable("data", charecterDetails);
+                bundle.putParcelable("data",charecterDetails);
                 datafragment33 f3=new datafragment33();
                 f3.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.maincontainer,f3).commit();
-
             }
         });
         return view;
@@ -103,12 +99,12 @@ public class datafragment22 extends Fragment implements  MovieListContract.View,
     @Override
     public void clickedUser(CharecterDetails charecterDetails) {
     }
-    @Override
-    public void showProgress() {
-    }
-    @Override
-    public void hideProgress() {
-    }
+//    @Override
+//    public void showProgress() {
+//    }
+//    @Override
+//    public void hideProgress() {
+//    }
     @Override
     public void setDataToRecycerview(List<ResultsItem> movieListArray) {
         userAdapter2.setData(movieListArray);
