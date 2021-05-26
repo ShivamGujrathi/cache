@@ -22,11 +22,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link datafragment22#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class datafragment22 extends Fragment implements  MovieListContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -45,25 +40,6 @@ public class datafragment22 extends Fragment implements  MovieListContract.View 
     public datafragment22() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment datafragment22.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static datafragment22 newInstance(String param1, String param2) {
-        datafragment22 fragment = new datafragment22();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,9 +74,6 @@ public class datafragment22 extends Fragment implements  MovieListContract.View 
         });
         return view;
     }
-//    @Override
-//    public void clickedUser(CharecterDetails charecterDetails) {
-//    }
     @Override
     //to show the progress bar while API being called
     public void showProgress() {

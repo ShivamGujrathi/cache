@@ -10,11 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link datafragment33#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class datafragment33 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -30,25 +25,6 @@ public class datafragment33 extends Fragment {
     public datafragment33() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment datafragment33.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static datafragment33 newInstance(String param1, String param2) {
-        datafragment33 fragment = new datafragment33();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
