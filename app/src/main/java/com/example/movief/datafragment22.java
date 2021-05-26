@@ -1,5 +1,6 @@
 package com.example.movief;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -26,7 +27,7 @@ import retrofit2.Response;
  * Use the {@link datafragment22#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class datafragment22 extends Fragment implements  MovieListContract.View, UserAdapter2.ClickedItem1  {
+public class datafragment22 extends Fragment implements  MovieListContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,6 +40,7 @@ public class datafragment22 extends Fragment implements  MovieListContract.View,
    private ResultsItem resultsItem;
     private RecyclerView recyclerView1;
     private MoviePresenter moviePresenter;
+    private ProgressDialog progressDialog;
    private UserAdapter2 userAdapter2;
     public datafragment22() {
         // Required empty public constructor
@@ -68,7 +70,7 @@ public class datafragment22 extends Fragment implements  MovieListContract.View,
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            resultsItem= (ResultsItem) getArguments().getParcelable("data");
+            resultsItem=getArguments().getParcelable("data");
         }
     }
 
@@ -96,21 +98,31 @@ public class datafragment22 extends Fragment implements  MovieListContract.View,
         });
         return view;
     }
+//    @Override
+//    public void clickedUser(CharecterDetails charecterDetails) {
+//    }
     @Override
-    public void clickedUser(CharecterDetails charecterDetails) {
+    //to show the progress bar while API being called
+    public void showProgress() {
+        progressDialog= new ProgressDialog(getContext());
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent);
     }
-//    @Override
-//    public void showProgress() {
-//    }
-//    @Override
-//    public void hideProgress() {
-//    }
     @Override
+    //hide the progress
+    public void hideProgress() {
+        progressDialog.dismiss();
+    }
+    @Override
+    //show the data in recyclerview
     public void setDataToRecycerview(List<ResultsItem> movieListArray) {
         userAdapter2.setData(movieListArray);
                     recyclerView1.setAdapter(userAdapter2);
     }
     @Override
+    //if fail
     public void onResponseFailure(Throwable throwable) {
         Log.e("failure",throwable.getLocalizedMessage());
         Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();

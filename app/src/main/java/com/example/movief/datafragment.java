@@ -1,5 +1,6 @@
 package com.example.movief;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -26,7 +27,7 @@ import retrofit2.Response;
  * Use the {@link datafragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class datafragment extends Fragment implements MovieListContract.View,UserAdapter.ClickedItem {
+public class datafragment extends Fragment implements MovieListContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,10 +37,12 @@ public class datafragment extends Fragment implements MovieListContract.View,Use
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    //initialization of recyclerview
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private ResultsItem movieList;
     private MoviePresenter moviePresenter;
+    private ProgressDialog progressDialog;
     private static String TAG="MovieListModel";
     public datafragment() {
         // Required empty public constructor
@@ -85,6 +88,7 @@ public class datafragment extends Fragment implements MovieListContract.View,Use
         movieList= new ResultsItem();
         userAdapter=new UserAdapter(new UserAdapter.ClickedItem() {
             @Override
+            //After clicked
             public void ClickedUser(ResultsItem userResponse) {
 
                 Log.e("clicked user",userResponse.getCharacters().toString());
@@ -95,26 +99,38 @@ public class datafragment extends Fragment implements MovieListContract.View,Use
              datafragment22 f2=new datafragment22();
              f2.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.maincontainer,f2).commit();
+
             }
         });
         return view;
     }
-    public void ClickedUser(ResultsItem userResponse) {
+   // public void ClickedUser(ResultsItem userResponse) {
+   // }
+    @Override
+    //to show the progress bar while API being called
+    public void showProgress() {
+        progressDialog= new ProgressDialog(getContext());
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent
+        );
     }
-//    @Override
-//    public void showProgress() {
-//    }
-//
-//    @Override
-//    public void hideProgress() {
-//    }
+
+    @Override
+    //hide progress bar when api get called
+    public void hideProgress() {
+        progressDialog.dismiss();
+    }
 
    @Override
+   //show data to recyclerview
  public void setDataToRecycerview(List<ResultsItem> movieListArray) {
      userAdapter.setData(movieListArray);
      recyclerView.setAdapter(userAdapter);
    }
     @Override
+    //if fail show toast
     public void onResponseFailure(Throwable throwable) {
         Log.e("failure",throwable.getLocalizedMessage());
         Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();

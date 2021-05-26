@@ -7,13 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -72,6 +69,7 @@ public class UserAdapter2 extends RecyclerView.Adapter<UserAdapter2.UserAdapter2
             charecter = itemView.findViewById(R.id.ccharecter);
         }
     }
+    //to get the details of character
     public void getAllUsers(String url)
     {
         String[] strings=url.split("/");
@@ -94,6 +92,7 @@ public class UserAdapter2 extends RecyclerView.Adapter<UserAdapter2.UserAdapter2
             }
         });
     }
+    //to to get charecter link and replace with character name
     public void getAllUsers1(String url, final TextView charecter)
     {
         String[] strings=url.split("/");
@@ -101,6 +100,7 @@ public class UserAdapter2 extends RecyclerView.Adapter<UserAdapter2.UserAdapter2
         call.enqueue(new Callback<CharecterDetails>() {
 
             @Override
+            //if successful we get name
             public void onResponse(Call<CharecterDetails>call, Response<CharecterDetails> response) {
                 if(response.isSuccessful())
                 {
@@ -110,6 +110,7 @@ public class UserAdapter2 extends RecyclerView.Adapter<UserAdapter2.UserAdapter2
                 }
             }
             @Override
+            //on failure show toast
             public void onFailure(Call<CharecterDetails> call, Throwable t) {
                 Log.e("failure",t.getLocalizedMessage());
                 Toast.makeText(context1, "fail", Toast.LENGTH_SHORT).show();

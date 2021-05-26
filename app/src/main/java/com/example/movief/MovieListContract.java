@@ -15,14 +15,14 @@ public interface MovieListContract {
 
     }
     interface View{
-      //  void showProgress();
-       // void hideProgress();
+       void showProgress();
+       void hideProgress();
         void setDataToRecycerview(List<ResultsItem>movieListArray);
         void onResponseFailure(Throwable throwable);
     }
     interface Presenter{
-        //void onDestroy();
-        //void getMoreData();
+        void onDestroy();
+        void getMoreData();
         void requestDataFromServer();
 
     }
