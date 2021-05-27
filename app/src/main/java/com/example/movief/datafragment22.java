@@ -99,5 +99,7 @@ public class datafragment22 extends Fragment implements  MovieListContract.View 
     public void onResponseFailure(Throwable throwable) {
         Log.e("failure",throwable.getLocalizedMessage());
         Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();
+
     }
+
 }

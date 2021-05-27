@@ -10,7 +10,8 @@ import retrofit2.http.Query;
 //to get extended URL
 public interface UserService {
     @GET("films")
-    Call<UserResponse>getAllMovie();
+    Call<UserResponse> getAllMovie();
+
     @GET("people/{id}")
-    Call<CharecterDetails>moviedetailModel(@Path("id") String stringId);
+    Call<CharecterDetails> moviedetailModel(@Path("id") String stringId);
 }
